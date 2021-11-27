@@ -6,6 +6,9 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		if(! is_file(APPPATH . 'Views/index.html')) {
+			throw new \CodeIgniter\Exceptions\PageNotFoundException();
+		}
+		return view('index.html');
 	}
 }
